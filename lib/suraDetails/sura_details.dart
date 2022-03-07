@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami_c5_sat/home/providers/app_provider.dart';
+import 'package:provider/provider.dart';
 
 import 'item_verse.dart';
 
@@ -16,11 +18,12 @@ class _SuraDetailsState extends State<SuraDetails> {
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as SuraDetailsArgs;
+    var provider = Provider.of<AppProvider>(context);
     if (verses.length == 0) loadFile('${args.index + 1}');
     return Stack(
       children: [
         Image.asset(
-          'assets/images/main_background.png',
+          provider.getMainBackGround(),
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,
